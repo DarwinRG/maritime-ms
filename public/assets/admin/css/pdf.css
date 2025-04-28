@@ -1,0 +1,14 @@
+
+@print {
+    @page :footer {
+        display: none
+    }
+
+    @page :header {
+        display: none
+    }
+}
+.article-right{
+    width: 100% !important;
+    background: red;
+}
