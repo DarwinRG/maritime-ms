@@ -11,7 +11,7 @@ use App\Models\Year;
 use Illuminate\Http\Request;
 use App\Utils\AuthTeacher;
 
-class scheduleController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Student\schedule;
+namespace App\Http\Controllers\Student\Schedule;
 
 use App\Http\Controllers\Controller;
 use App\Models\Schedule;
