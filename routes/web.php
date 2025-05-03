@@ -59,10 +59,10 @@ Route::middleware(['PreventBackHistory','auth','isAdmin'])->prefix('admin')->nam
         'course'=>CourseController::class,
         'subject'=>subjectController::class,
         'teacher'=>TeacherController::class,
-        'student'=>studentController::class,
-        'year'=>yearController::class,
-        'section'=>sectionController::class,
-        'schedule'=>scheduleController::class,
+        'student'=>StudentController::class,
+        'year'=>YearController::class,
+        'section'=>SectionController::class,
+        'schedule'=>ScheduleController::class,
         'setting'=>SettingSettingController::class,
     ]);
 });

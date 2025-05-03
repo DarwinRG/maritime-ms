@@ -44,7 +44,7 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-
+        set_time_limit(300);
         // Validate input
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',

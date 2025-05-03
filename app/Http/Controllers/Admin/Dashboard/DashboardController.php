@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\Schedule;
+use App\Models\Student;
+use App\Models\Subject;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +19,37 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
+
+        $schedules = Schedule::count();
+
+        $studentCount = Student::count();
+        $teacherCount = Teacher::count();
+        $subjectCount = Subject::count();
+        $courseCount = Course::count();
+
+        $moduleCount = Schedule::withCount('modules')
+            ->get()
+            ->sum('modules_count');
+
+      $moduleListCount = Schedule::with('modules.list')
+        ->get()
+        ->pluck('modules')
+        ->flatten()
+        ->pluck('list')
+        ->flatten()
+        ->count();
+
+
+        return view('admin.dashboard.index', compact(
+            'schedules',
+            'studentCount',
+            'teacherCount',
+            'subjectCount',
+            'courseCount',
+            'moduleCount',
+            'moduleListCount'
+        ));
+
     }
 
     /**

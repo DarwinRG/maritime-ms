@@ -11,11 +11,11 @@ class Schedule extends Model
     protected $guarded = [];
 
     public function subject(){
-        return $this->belongsTo(subject::class);
+        return $this->belongsTo(Subject::class);
     }
 
     public function year(){
-        return $this->belongsTo(year::class);
+        return $this->belongsTo(Year::class);
     }
 
     public function section(){

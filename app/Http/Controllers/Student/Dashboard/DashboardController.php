@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Student\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\ScheduleStudent;
+use App\Utils\AuthStudent;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -14,7 +16,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('student.dashboard.index');
+        $student = AuthStudent::get();
+        $studentCount = ScheduleStudent::where('student_id',$student->id)->count();
+
+        $moduleCount = ScheduleStudent::where('student_id', $student->id)
+        ->with('schedule.modules')
+        ->get()
+        ->pluck('schedule.modules')
+        ->flatten()
+        ->count();
+
+        return view('student.dashboard.index', compact('studentCount', 'moduleCount'));
     }
 
     /**
